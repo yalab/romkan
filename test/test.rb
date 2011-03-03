@@ -1,27 +1,28 @@
+# -*- coding: utf-8 -*-
 #
-# ruby -Ke test.rb </dev/null && echo ok
+# ruby test.rb </dev/null && echo ok
 #
-require 'romkan'
+require './../lib/romkan'
 
-raise unless "kanji".to_kana == "¤«¤ó¤¸"
-raise unless "kanzi".to_kana == "¤«¤ó¤¸"
-raise unless "kannji".to_kana == "¤«¤ó¤¸"
-raise unless "chie".to_kana == "¤Á¤¨"
-raise unless "tie".to_kana == "¤Á¤¨"
-raise unless "kyouju".to_kana == "¤­¤ç¤¦¤¸¤å"
-raise unless "syuukyou".to_kana == "¤·¤å¤¦¤­¤ç¤¦"
-raise unless "shuukyou".to_kana == "¤·¤å¤¦¤­¤ç¤¦"
-raise unless "saichuu".to_kana == "¤µ¤¤¤Á¤å¤¦"
-raise unless "saityuu".to_kana == "¤µ¤¤¤Á¤å¤¦"
-raise unless "cheri-".to_kana == "¤Á¤§¤ê¡¼"
-raise unless "tyeri-".to_kana == "¤Á¤§¤ê¡¼"
-raise unless "shinrai".to_kana == "¤·¤ó¤é¤¤"
-raise unless "sinrai".to_kana == "¤·¤ó¤é¤¤"
-raise unless "hannnou".to_kana == "¤Ï¤ó¤Î¤¦"
-raise unless "han'nou".to_kana == "¤Ï¤ó¤Î¤¦"
+raise unless "kanji".to_kana == "ã‹ã‚“ã˜"
+raise unless "kanzi".to_kana == "ã‹ã‚“ã˜"
+raise unless "kannji".to_kana == "ã‹ã‚“ã˜"
+raise unless "chie".to_kana == "ã¡ãˆ"
+raise unless "tie".to_kana == "ã¡ãˆ"
+raise unless "kyouju".to_kana == "ãã‚‡ã†ã˜ã‚…"
+raise unless "syuukyou".to_kana == "ã—ã‚…ã†ãã‚‡ã†"
+raise unless "shuukyou".to_kana == "ã—ã‚…ã†ãã‚‡ã†"
+raise unless "saichuu".to_kana == "ã•ã„ã¡ã‚…ã†"
+raise unless "saityuu".to_kana == "ã•ã„ã¡ã‚…ã†"
+raise unless "cheri-".to_kana == "ã¡ã‡ã‚Šãƒ¼"
+raise unless "tyeri-".to_kana == "ã¡ã‡ã‚Šãƒ¼"
+raise unless "shinrai".to_kana == "ã—ã‚“ã‚‰ã„"
+raise unless "sinrai".to_kana == "ã—ã‚“ã‚‰ã„"
+raise unless "hannnou".to_kana == "ã¯ã‚“ã®ã†"
+raise unless "han'nou".to_kana == "ã¯ã‚“ã®ã†"
 
-raise unless "je".to_kana == "¤¸¤§"
-raise unless "e-jento".to_kana == "¤¨¡¼¤¸¤§¤ó¤È"
+raise unless "je".to_kana == "ã˜ã‡"
+raise unless "e-jento".to_kana == "ãˆãƒ¼ã˜ã‡ã‚“ã¨"
 
 raise unless "kannzi".to_hepburn == "kanji"
 raise unless "tie".to_hepburn == "chie"
@@ -29,9 +30,9 @@ raise unless "tie".to_hepburn == "chie"
 raise unless "kanji".to_kunrei == "kanzi"
 raise unless "chie".to_kunrei == "tie"
 
-raise unless "¤«¤ó¤¸".to_roma == "kanji"
-raise unless "¤Á¤ã¤¦".to_roma == "chau"
-raise unless "¤Ï¤ó¤Î¤¦".to_roma == "han'nou"
+raise unless "ã‹ã‚“ã˜".to_roma == "kanji"
+raise unless "ã¡ã‚ƒã†".to_roma == "chau"
+raise unless "ã¯ã‚“ã®ã†".to_roma == "han'nou"
 
 raise unless "a".consonant? == false
 raise unless "k".consonant? == true

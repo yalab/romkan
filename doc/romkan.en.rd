@@ -15,10 +15,6 @@ Tha latest version of Ruby/Romkan is available at
 ((<URL:http://namazu.org/~satoru/ruby-romkan/>))
 .
 
-== Charcode
-
-Set Ruby's charcode to EUC-JP. $KCODE="e"
-
 == API
 
 --- String#to_kana
@@ -63,8 +59,8 @@ Set Ruby's charcode to EUC-JP. $KCODE="e"
   irb(main):002:0> require 'romkan'
   true
   irb(main):003:0> "syatyou".to_kana
-  "¤·¤ã¤Á¤ç¤¦"
-  irb(main):004:0> "¤·¤ã¤Á¤ç¤¦".to_roma
+  "ã—ã‚ƒã¡ã‚‡ã†"
+  irb(main):004:0> "ã—ã‚ƒã¡ã‚‡ã†".to_roma
   "shachou"
   irb(main):005:0> "syatyou".to_hepburn
   "shachou"

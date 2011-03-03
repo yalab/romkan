@@ -1,58 +1,54 @@
 =begin
 index:eJ
 
-= Ruby/Romkan: �����޻��ȤҤ餬�ʤ���ߤ��Ѵ����� Ruby�ѤΥ饤�֥��
+= Ruby/Romkan: ローマ字とひらがなを相互に変換する Ruby用のライブラリ
 
-�ǽ�������: 2002-02-12
+最終更新日: 2002-02-12
 
 --
 
-Ruby/Romkan �ϥ����޻��ȤҤ餬�ʤ���ߤ��Ѵ����� Ruby �ѤΥ饤�֥��Ǥ�������
-�޻���ʸ������Ҥ餬�ʤ�ʸ������Ѵ�������Ӥ���ȿ�Ф�Ԥ����Ȥ��Ǥ��ޤ���
+Ruby/Romkan はローマ字とひらがなを相互に変換する Ruby 用のライブラリです。ロー
+マ字の文字列ををひらがなの文字列に変換、およびその反対を行うことができます。
 
-�ǿ��Ǥ� ((<URL:http://namazu.org/~satoru/ruby-romkan/>))
-���������ǽ�Ǥ���
-
-== ʸ��������
-
-Ruby ��ʸ�������ɤ� EUC-JP �����ꤷ�ޤ��� $KCODE="e"
+最新版は ((<URL:http://namazu.org/~satoru/ruby-romkan/>))
+から入手可能です。
 
 == API
 
 --- String#to_kana
-    ���ἰ�ޤ��ϥإܥ󼰤Υ����޻����Ҥ餬�ʤ�ʸ������Ѵ�����
+    訓令式またはヘボン式のローマ字列をひらがなの文字列に変換する
 
 --- String#to_roma
-    �Ҥ餬�ʤ�ʸ�����إܥ󼰤Υ����޻�����Ѵ�����
+    ひらがなの文字列をヘボン式のローマ字列に変換する
 
 --- String#to_hepburn
-    ���ἰ�Υ����޻����إܥ󼰤Υ����޻�����Ѵ�����
+    訓令式のローマ字列をヘボン式のローマ字列に変換する
 
 --- String#to_kunrei
-    �إܥ󼰤Υ����޻�����ἰ�Υ����޻�����Ѵ�����
+    ヘボン式のローマ字列を訓令式のローマ字列に変換する
 
 --- String#to_kana!
-    �˲�Ū�� String#to_kana.
+    破壊的な String#to_kana.
 
 --- String#to_roma!
-    �˲�Ū�� String#to_roma.
+    破壊的な String#to_roma.
 
 --- String#to_hepburn!
-    �˲�Ū�� String#to_hepburn.
+    破壊的な String#to_hepburn.
 
 --- String#to_kunrei!
-    �˲�Ū�� String#to_kunrei.
+    破壊的な String#to_kunrei.
 
 --- String#consonant?
-    self ���Ҳ��ʤ� true ���֤�
+    self が子音なら true を返す
 
 --- String#vowel?
-    self ���첻�ʤ� true ���֤�
+    self が母音なら true を返す
 
 --- String#expand_consonant
-    self �������λҲ���Ÿ������
+    self の末尾の子音を展開する
     e.g. "z".expand_consonant => ["za", "ze", "zi", "zo", "zu"]
-=== ������
+=== 使用例
 
   % irb
   irb(main):001:0> $KCODE="e"
@@ -60,16 +56,16 @@ Ruby ��ʸ�������ɤ� EUC-JP �����ꤷ�ޤ��� $KCODE="e"
   irb(main):002:0> require 'romkan'
   true
   irb(main):003:0> "syatyou".to_kana
-  "������礦"
-  irb(main):004:0> "������礦".to_roma
+  "しゃちょう"
+  irb(main):004:0> "しゃちょう".to_roma
   "shachou"
   irb(main):005:0> "syatyou".to_hepburn
   "shachou"
 
-=== �����������
+=== ダウンロード
 
-Ruby �Υ饤���󥹤˽��ä��ե꡼���եȥ������Ȥ��Ƹ������ޤ���
-������̵�ݾڤǤ���
+Ruby のライセンスに従ったフリーソフトウェアとして公開します。
+完全に無保証です。
 
   * ((<URL:http://namazu.org/~satoru/ruby-romkan/ruby-romkan-0.4.tar.gz>))
   * ((<URL:http://cvs.namazu.org/ruby-romkan/>))

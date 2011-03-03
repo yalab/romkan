@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 #
 # Ruby/Romkan - a Romaji <-> Kana conversion library for Ruby.
 #
@@ -7,9 +8,6 @@
 #
 # You can redistribute it and/or modify it under the terms of 
 # the Ruby's licence.
-#
-# NOTE: Ruby/Romkan can work only with EUC_JP encoding. ($KCODE="e")
-#
 
 module Romkan
   VERSION = '0.4'
@@ -26,158 +24,158 @@ end
 class String
 # This table is imported from KAKASI <http://kakasi.namazu.org/> and modified.
   KUNREITAB = "\
-คก	xa	คข	a	คฃ	xi	คค	i	คฅ	xu
-คฆ	u	คฆกซ	vu	คฆกซคก	va	คฆกซคฃ	vi 	คฆกซคง	ve
-คฆกซคฉ	vo	คง	xe	คจ	e	คฉ	xo	คช	o 
+ใ	xa	ใ	a	ใ	xi	ใ	i	ใ…	xu
+ใ	u	ใใ	vu	ใใใ	va	ใใใ	vi 	ใใใ	ve
+ใใใ	vo	ใ	xe	ใ	e	ใ	xo	ใ	o 
 
-คซ	ka	คฌ	ga	คญ	ki	คญคใ	kya	คญคๅ	kyu 
-คญค็	kyo	คฎ	gi	คฎคใ	gya	คฎคๅ	gyu	คฎค็	gyo 
-คฏ	ku	คฐ	gu	คฑ	ke	คฒ	ge	คณ	ko
-คด	go 
+ใ	ka	ใ	ga	ใ	ki	ใใ	kya	ใใ…	kyu 
+ใใ	kyo	ใ	gi	ใใ	gya	ใใ…	gyu	ใใ	gyo 
+ใ	ku	ใ	gu	ใ‘	ke	ใ’	ge	ใ“	ko
+ใ”	go 
 
-คต	sa	คถ	za	คท	si	คทคใ	sya	คทคๅ	syu 
-คทค็	syo	คธ	zi	คธคใ	zya	คธคๅ	zyu	คธค็	zyo 
-คน	su	คบ	zu	คป	se	คผ	ze	คฝ	so
-คพ	zo 
+ใ•	sa	ใ–	za	ใ—	si	ใ—ใ	sya	ใ—ใ…	syu 
+ใ—ใ	syo	ใ	zi	ใใ	zya	ใใ…	zyu	ใใ	zyo 
+ใ	su	ใ	zu	ใ	se	ใ	ze	ใ	so
+ใ	zo 
 
-คฟ	ta	คภ	da	คม	ti	คมคใ	tya	คมคๅ	tyu 
-คมค็	tyo	คย	di	คยคใ	dya	คยคๅ	dyu	คยค็	dyo 
+ใ	ta	ใ 	da	ใก	ti	ใกใ	tya	ใกใ…	tyu 
+ใกใ	tyo	ใข	di	ใขใ	dya	ใขใ…	dyu	ใขใ	dyo 
 
-คร	xtu 
-ครคฆกซ	vvu	ครคฆกซคก	vva	ครคฆกซคฃ	vvi 
-ครคฆกซคง	vve	ครคฆกซคฉ	vvo 
-ครคซ	kka	ครคฌ	gga	ครคญ	kki	ครคญคใ	kkya 
-ครคญคๅ	kkyu	ครคญค็	kkyo	ครคฎ	ggi	ครคฎคใ	ggya 
-ครคฎคๅ	ggyu	ครคฎค็	ggyo	ครคฏ	kku	ครคฐ	ggu 
-ครคฑ	kke	ครคฒ	gge	ครคณ	kko	ครคด	ggo	ครคต	ssa 
-ครคถ	zza	ครคท	ssi	ครคทคใ	ssya 
-ครคทคๅ	ssyu	ครคทค็	ssho 
-ครคธ	zzi	ครคธคใ	zzya	ครคธคๅ	zzyu	ครคธค็	zzyo 
-ครคน	ssu	ครคบ	zzu	ครคป	sse	ครคผ	zze	ครคฝ	sso 
-ครคพ	zzo	ครคฟ	tta	ครคภ	dda	ครคม	tti 
-ครคมคใ	ttya	ครคมคๅ	ttyu	ครคมค็	ttyo	ครคย	ddi 
-ครคยคใ	ddya	ครคยคๅ	ddyu	ครคยค็	ddyo	ครคฤ	ttu 
-ครคล	ddu	ครคฦ	tte	ครคว	dde	ครคศ	tto	ครคษ	ddo 
-ครคฯ	hha	ครคะ	bba	ครคั	ppa	ครคา	hhi 
-ครคาคใ	hhya	ครคาคๅ	hhyu	ครคาค็	hhyo	ครคำ	bbi 
-ครคำคใ	bbya	ครคำคๅ	bbyu	ครคำค็	bbyo	ครคิ	ppi 
-ครคิคใ	ppya	ครคิคๅ	ppyu	ครคิค็	ppyo	ครคี	hhu 
-ครคีคก	ffa	ครคีคฃ	ffi	ครคีคง	ffe	ครคีคฉ	ffo 
-ครคึ	bbu	ครคื	ppu	ครคุ	hhe	ครคู	bbe	ครคฺ    ppe
-ครคÛ	hho	ครคÜ	bbo	ครคÝ	ppo	ครคไ	yya	ครคๆ	yyu 
-ครค่	yyo	ครค้	rra	ครค๊	rri	ครค๊คใ	rrya 
-ครค๊คๅ	rryu	ครค๊ค็	rryo	ครค๋	rru	ครค์	rre 
-ครคํ	rro 
+ใฃ	xtu 
+ใฃใใ	vvu	ใฃใใใ	vva	ใฃใใใ	vvi 
+ใฃใใใ	vve	ใฃใใใ	vvo 
+ใฃใ	kka	ใฃใ	gga	ใฃใ	kki	ใฃใใ	kkya 
+ใฃใใ…	kkyu	ใฃใใ	kkyo	ใฃใ	ggi	ใฃใใ	ggya 
+ใฃใใ…	ggyu	ใฃใใ	ggyo	ใฃใ	kku	ใฃใ	ggu 
+ใฃใ‘	kke	ใฃใ’	gge	ใฃใ“	kko	ใฃใ”	ggo	ใฃใ•	ssa 
+ใฃใ–	zza	ใฃใ—	ssi	ใฃใ—ใ	ssya 
+ใฃใ—ใ…	ssyu	ใฃใ—ใ	ssho 
+ใฃใ	zzi	ใฃใใ	zzya	ใฃใใ…	zzyu	ใฃใใ	zzyo 
+ใฃใ	ssu	ใฃใ	zzu	ใฃใ	sse	ใฃใ	zze	ใฃใ	sso 
+ใฃใ	zzo	ใฃใ	tta	ใฃใ 	dda	ใฃใก	tti 
+ใฃใกใ	ttya	ใฃใกใ…	ttyu	ใฃใกใ	ttyo	ใฃใข	ddi 
+ใฃใขใ	ddya	ใฃใขใ…	ddyu	ใฃใขใ	ddyo	ใฃใค	ttu 
+ใฃใฅ	ddu	ใฃใฆ	tte	ใฃใง	dde	ใฃใจ	tto	ใฃใฉ	ddo 
+ใฃใฏ	hha	ใฃใฐ	bba	ใฃใฑ	ppa	ใฃใฒ	hhi 
+ใฃใฒใ	hhya	ใฃใฒใ…	hhyu	ใฃใฒใ	hhyo	ใฃใณ	bbi 
+ใฃใณใ	bbya	ใฃใณใ…	bbyu	ใฃใณใ	bbyo	ใฃใด	ppi 
+ใฃใดใ	ppya	ใฃใดใ…	ppyu	ใฃใดใ	ppyo	ใฃใต	hhu 
+ใฃใตใ	ffa	ใฃใตใ	ffi	ใฃใตใ	ffe	ใฃใตใ	ffo 
+ใฃใถ	bbu	ใฃใท	ppu	ใฃใธ	hhe	ใฃใน	bbe	ใฃใบ    ppe
+ใฃใป	hho	ใฃใผ	bbo	ใฃใฝ	ppo	ใฃใ	yya	ใฃใ	yyu 
+ใฃใ	yyo	ใฃใ	rra	ใฃใ	rri	ใฃใใ	rrya 
+ใฃใใ…	rryu	ใฃใใ	rryo	ใฃใ	rru	ใฃใ	rre 
+ใฃใ	rro 
 
-คฤ	tu	คล	du	คฦ	te	คว	de	คศ	to
-คษ	do 
+ใค	tu	ใฅ	du	ใฆ	te	ใง	de	ใจ	to
+ใฉ	do 
 
-คส	na	คห	ni	คหคใ	nya	คหคๅ	nyu	คหค็	nyo 
-คฬ	nu	คอ	ne	คฮ	no 
+ใช	na	ใซ	ni	ใซใ	nya	ใซใ…	nyu	ใซใ	nyo 
+ใฌ	nu	ใญ	ne	ใฎ	no 
 
-คฯ	ha	คะ	ba	คั	pa	คา	hi	คาคใ	hya 
-คาคๅ	hyu	คาค็	hyo	คำ	bi	คำคใ	bya	คำคๅ	byu 
-คำค็	byo	คิ	pi	คิคใ	pya	คิคๅ	pyu	คิค็	pyo 
-คี	hu	คีคก	fa	คีคฃ	fi	คีคง	fe	คีคฉ	fo 
-คึ	bu	คื	pu	คุ	he	คู	be	คฺ	pe
-คÛ	ho	คÜ	bo	คÝ	po 
+ใฏ	ha	ใฐ	ba	ใฑ	pa	ใฒ	hi	ใฒใ	hya 
+ใฒใ…	hyu	ใฒใ	hyo	ใณ	bi	ใณใ	bya	ใณใ…	byu 
+ใณใ	byo	ใด	pi	ใดใ	pya	ใดใ…	pyu	ใดใ	pyo 
+ใต	hu	ใตใ	fa	ใตใ	fi	ใตใ	fe	ใตใ	fo 
+ใถ	bu	ใท	pu	ใธ	he	ใน	be	ใบ	pe
+ใป	ho	ใผ	bo	ใฝ	po 
 
-คÞ	ma	ค฿	mi	ค฿คใ	mya	ค฿คๅ	myu	ค฿ค็	myo 
-คเ	mu	คแ	me	คโ	mo 
+ใพ	ma	ใฟ	mi	ใฟใ	mya	ใฟใ…	myu	ใฟใ	myo 
+ใ€	mu	ใ	me	ใ	mo 
 
-คใ	xya	คไ	ya	คๅ	xyu	คๆ	yu	ค็	xyo
-ค่	yo
+ใ	xya	ใ	ya	ใ…	xyu	ใ	yu	ใ	xyo
+ใ	yo
 
-ค้	ra	ค๊	ri	ค๊คใ	rya	ค๊คๅ	ryu	ค๊ค็	ryo 
-ค๋	ru	ค์	re	คํ	ro 
+ใ	ra	ใ	ri	ใใ	rya	ใใ…	ryu	ใใ	ryo 
+ใ	ru	ใ	re	ใ	ro 
 
-ค๎	xwa	ค๏	wa	ค๐	wi	ค๑	we
-ค๒	wo	ค๓	n 
+ใ	xwa	ใ	wa	ใ	wi	ใ‘	we
+ใ’	wo	ใ“	n 
 
-ค๓     n'
-ควคฃ   dyi
-กผ     -
-คมคง    tye
-ครคมคง	ttye
-คธคง	zye
+ใ“     n'
+ใงใ   dyi
+ใผ     -
+ใกใ    tye
+ใฃใกใ	ttye
+ใใ	zye
 "
 
   HEPBURNTAB = "\
-คก	xa	คข	a	คฃ	xi	คค	i	คฅ	xu
-คฆ	u	คฆกซ	vu	คฆกซคก	va	คฆกซคฃ	vi	คฆกซคง	ve
-คฆกซคฉ	vo	คง	xe	คจ	e	คฉ	xo	คช	o
+ใ	xa	ใ	a	ใ	xi	ใ	i	ใ…	xu
+ใ	u	ใใ	vu	ใใใ	va	ใใใ	vi	ใใใ	ve
+ใใใ	vo	ใ	xe	ใ	e	ใ	xo	ใ	o
 	
 
-คซ	ka	คฌ	ga	คญ	ki	คญคใ	kya	คญคๅ	kyu
-คญค็	kyo	คฎ	gi	คฎคใ	gya	คฎคๅ	gyu	คฎค็	gyo
-คฏ	ku	คฐ	gu	คฑ	ke	คฒ	ge	คณ	ko
-คด	go	
+ใ	ka	ใ	ga	ใ	ki	ใใ	kya	ใใ…	kyu
+ใใ	kyo	ใ	gi	ใใ	gya	ใใ…	gyu	ใใ	gyo
+ใ	ku	ใ	gu	ใ‘	ke	ใ’	ge	ใ“	ko
+ใ”	go	
 
-คต	sa	คถ	za	คท	shi	คทคใ	sha	คทคๅ	shu
-คทค็	sho	คธ	ji	คธคใ	ja	คธคๅ	ju	คธค็	jo
-คน	su	คบ	zu	คป	se	คผ	ze	คฝ	so
-คพ	zo
+ใ•	sa	ใ–	za	ใ—	shi	ใ—ใ	sha	ใ—ใ…	shu
+ใ—ใ	sho	ใ	ji	ใใ	ja	ใใ…	ju	ใใ	jo
+ใ	su	ใ	zu	ใ	se	ใ	ze	ใ	so
+ใ	zo
 
-คฟ	ta	คภ	da	คม	chi	คมคใ	cha	คมคๅ	chu
-คมค็	cho	คย	di	คยคใ	dya	คยคๅ	dyu	คยค็	dyo
+ใ	ta	ใ 	da	ใก	chi	ใกใ	cha	ใกใ…	chu
+ใกใ	cho	ใข	di	ใขใ	dya	ใขใ…	dyu	ใขใ	dyo
 
-คร	xtsu	
-ครคฆกซ	vvu	ครคฆกซคก	vva	ครคฆกซคฃ	vvi	
-ครคฆกซคง	vve	ครคฆกซคฉ	vvo	
-ครคซ	kka	ครคฌ	gga	ครคญ	kki	ครคญคใ	kkya	
-ครคญคๅ	kkyu	ครคญค็	kkyo	ครคฎ	ggi	ครคฎคใ	ggya	
-ครคฎคๅ	ggyu	ครคฎค็	ggyo	ครคฏ	kku	ครคฐ	ggu	
-ครคฑ	kke	ครคฒ	gge	ครคณ	kko	ครคด	ggo	ครคต	ssa
-ครคถ	zza	ครคท	sshi	ครคทคใ	ssha	
-ครคทคๅ	sshu	ครคทค็	ssho	
-ครคธ	jji	ครคธคใ	jja	ครคธคๅ	jju	ครคธค็	jjo	
-ครคน	ssu	ครคบ	zzu	ครคป	sse	ครคผ	zze	ครคฝ	sso
-ครคพ	zzo	ครคฟ	tta	ครคภ	dda	ครคม	cchi	
-ครคมคใ	ccha	ครคมคๅ	cchu	ครคมค็	ccho	ครคย	ddi	
-ครคยคใ	ddya	ครคยคๅ	ddyu	ครคยค็	ddyo	ครคฤ	ttsu	
-ครคล	ddu	ครคฦ	tte	ครคว	dde	ครคศ	tto	ครคษ	ddo
-ครคฯ	hha	ครคะ	bba	ครคั	ppa	ครคา	hhi	
-ครคาคใ	hhya	ครคาคๅ	hhyu	ครคาค็	hhyo	ครคำ	bbi	
-ครคำคใ	bbya	ครคำคๅ	bbyu	ครคำค็	bbyo	ครคิ	ppi	
-ครคิคใ	ppya	ครคิคๅ	ppyu	ครคิค็	ppyo	ครคี	ffu	
-ครคีคก	ffa	ครคีคฃ	ffi	ครคีคง	ffe	ครคีคฉ	ffo	
-ครคึ	bbu	ครคื	ppu	ครคุ	hhe	ครคู	bbe	ครคฺ	ppe
-ครคÛ	hho	ครคÜ	bbo	ครคÝ	ppo	ครคไ	yya	ครคๆ	yyu
-ครค่	yyo	ครค้	rra	ครค๊	rri	ครค๊คใ	rrya	
-ครค๊คๅ	rryu	ครค๊ค็	rryo	ครค๋	rru	ครค์	rre	
-ครคํ	rro	
+ใฃ	xtsu	
+ใฃใใ	vvu	ใฃใใใ	vva	ใฃใใใ	vvi	
+ใฃใใใ	vve	ใฃใใใ	vvo	
+ใฃใ	kka	ใฃใ	gga	ใฃใ	kki	ใฃใใ	kkya	
+ใฃใใ…	kkyu	ใฃใใ	kkyo	ใฃใ	ggi	ใฃใใ	ggya	
+ใฃใใ…	ggyu	ใฃใใ	ggyo	ใฃใ	kku	ใฃใ	ggu	
+ใฃใ‘	kke	ใฃใ’	gge	ใฃใ“	kko	ใฃใ”	ggo	ใฃใ•	ssa
+ใฃใ–	zza	ใฃใ—	sshi	ใฃใ—ใ	ssha	
+ใฃใ—ใ…	sshu	ใฃใ—ใ	ssho	
+ใฃใ	jji	ใฃใใ	jja	ใฃใใ…	jju	ใฃใใ	jjo	
+ใฃใ	ssu	ใฃใ	zzu	ใฃใ	sse	ใฃใ	zze	ใฃใ	sso
+ใฃใ	zzo	ใฃใ	tta	ใฃใ 	dda	ใฃใก	cchi	
+ใฃใกใ	ccha	ใฃใกใ…	cchu	ใฃใกใ	ccho	ใฃใข	ddi	
+ใฃใขใ	ddya	ใฃใขใ…	ddyu	ใฃใขใ	ddyo	ใฃใค	ttsu	
+ใฃใฅ	ddu	ใฃใฆ	tte	ใฃใง	dde	ใฃใจ	tto	ใฃใฉ	ddo
+ใฃใฏ	hha	ใฃใฐ	bba	ใฃใฑ	ppa	ใฃใฒ	hhi	
+ใฃใฒใ	hhya	ใฃใฒใ…	hhyu	ใฃใฒใ	hhyo	ใฃใณ	bbi	
+ใฃใณใ	bbya	ใฃใณใ…	bbyu	ใฃใณใ	bbyo	ใฃใด	ppi	
+ใฃใดใ	ppya	ใฃใดใ…	ppyu	ใฃใดใ	ppyo	ใฃใต	ffu	
+ใฃใตใ	ffa	ใฃใตใ	ffi	ใฃใตใ	ffe	ใฃใตใ	ffo	
+ใฃใถ	bbu	ใฃใท	ppu	ใฃใธ	hhe	ใฃใน	bbe	ใฃใบ	ppe
+ใฃใป	hho	ใฃใผ	bbo	ใฃใฝ	ppo	ใฃใ	yya	ใฃใ	yyu
+ใฃใ	yyo	ใฃใ	rra	ใฃใ	rri	ใฃใใ	rrya	
+ใฃใใ…	rryu	ใฃใใ	rryo	ใฃใ	rru	ใฃใ	rre	
+ใฃใ	rro	
 
-คฤ	tsu	คล	du	คฦ	te	คว	de	คศ	to
-คษ	do	
+ใค	tsu	ใฅ	du	ใฆ	te	ใง	de	ใจ	to
+ใฉ	do	
 
-คส	na	คห	ni	คหคใ	nya	คหคๅ	nyu	คหค็	nyo
-คฬ	nu	คอ	ne	คฮ	no	
+ใช	na	ใซ	ni	ใซใ	nya	ใซใ…	nyu	ใซใ	nyo
+ใฌ	nu	ใญ	ne	ใฎ	no	
 
-คฯ	ha	คะ	ba	คั	pa	คา	hi	คาคใ	hya
-คาคๅ	hyu	คาค็	hyo	คำ	bi	คำคใ	bya	คำคๅ	byu
-คำค็	byo	คิ	pi	คิคใ	pya	คิคๅ	pyu	คิค็	pyo
-คี	fu	คีคก	fa	คีคฃ	fi	คีคง	fe	คีคฉ	fo
-คึ	bu	คื	pu	คุ	he	คู	be	คฺ	pe
-คÛ	ho	คÜ	bo	คÝ	po	
+ใฏ	ha	ใฐ	ba	ใฑ	pa	ใฒ	hi	ใฒใ	hya
+ใฒใ…	hyu	ใฒใ	hyo	ใณ	bi	ใณใ	bya	ใณใ…	byu
+ใณใ	byo	ใด	pi	ใดใ	pya	ใดใ…	pyu	ใดใ	pyo
+ใต	fu	ใตใ	fa	ใตใ	fi	ใตใ	fe	ใตใ	fo
+ใถ	bu	ใท	pu	ใธ	he	ใน	be	ใบ	pe
+ใป	ho	ใผ	bo	ใฝ	po	
 
-คÞ	ma	ค฿	mi	ค฿คใ	mya	ค฿คๅ	myu	ค฿ค็	myo
-คเ	mu	คแ	me	คโ	mo
+ใพ	ma	ใฟ	mi	ใฟใ	mya	ใฟใ…	myu	ใฟใ	myo
+ใ€	mu	ใ	me	ใ	mo
 
-คใ	xya	คไ	ya	คๅ	xyu	คๆ	yu	ค็	xyo
-ค่	yo	
+ใ	xya	ใ	ya	ใ…	xyu	ใ	yu	ใ	xyo
+ใ	yo	
 
-ค้	ra	ค๊	ri	ค๊คใ	rya	ค๊คๅ	ryu	ค๊ค็	ryo
-ค๋	ru	ค์	re	คํ	ro	
+ใ	ra	ใ	ri	ใใ	rya	ใใ…	ryu	ใใ	ryo
+ใ	ru	ใ	re	ใ	ro	
 
-ค๎	xwa	ค๏	wa	ค๐	wi	ค๑	we
-ค๒	wo	ค๓	n	
+ใ	xwa	ใ	wa	ใ	wi	ใ‘	we
+ใ’	wo	ใ“	n	
 
-ค๓     n'
-ควคฃ   dyi
-กผ     -
-คมคง    che
-ครคมคง	cche
-คธคง	je
+ใ“     n'
+ใงใ   dyi
+ใผ     -
+ใกใ    che
+ใฃใกใ	cche
+ใใ	je
 "
 
   KANROM = (kanaroma = Hash.new
