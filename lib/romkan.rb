@@ -8,11 +8,8 @@
 #
 # You can redistribute it and/or modify it under the terms of 
 # the Ruby's licence.
-
-module Romkan
-  VERSION = '0.4'
-end
-
+$LOAD_PATH << File.dirname(File.expand_path(__FILE__))
+require 'romkan/version'
 class Array
   def pairs(s=2)
     0.step(self.size-1,s){
@@ -20,7 +17,7 @@ class Array
     }
   end
 end
-	
+
 class String
 # This table is imported from KAKASI <http://kakasi.namazu.org/> and modified.
   KUNREITAB = "\
