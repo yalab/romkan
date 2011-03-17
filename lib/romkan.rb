@@ -104,7 +104,7 @@ class String
 ぁ	xa	あ	a	ぃ	xi	い	i	ぅ	xu
 う	u	う゛	vu	う゛ぁ	va	う゛ぃ	vi	う゛ぇ	ve
 う゛ぉ	vo	ぇ	xe	え	e	ぉ	xo	お	o
-	
+
 
 か	ka	が	ga	き	ki	きゃ	kya	きゅ	kyu
 きょ	kyo	ぎ	gi	ぎゃ	gya	ぎゅ	gyu	ぎょ	gyo
@@ -179,18 +179,18 @@ class String
 "
 
   KANROM = (kanaroma = Hash.new
-	    (KUNREITAB + HEPBURNTAB).split(/\s+/).pairs {|x|
-	      kana, roma = x
-	      kanaroma[kana] = roma
-	    }
-	    kanaroma)
+            (KUNREITAB + HEPBURNTAB).split(/\s+/).pairs {|x|
+              kana, roma = x
+              kanaroma[kana] = roma
+            }
+            kanaroma)
 
   ROMKAN = (romakana = Hash.new
-	    (KUNREITAB + HEPBURNTAB).split(/\s+/).pairs {|x|
-	      kana, roma = x
-	      romakana[roma] = kana
-	    }
-	    romakana)
+            (KUNREITAB + HEPBURNTAB).split(/\s+/).pairs {|x|
+              kana, roma = x
+              romakana[roma] = kana
+            }
+            romakana)
 
   # Sort in long order so that a longer Romaji sequence precedes.
   ROMPAT = ROMKAN.keys.sort {|a, b| b.length <=> a.length}.join "|"
@@ -207,14 +207,14 @@ class String
   HEPPAT = HEPBURN.sort {|a, b| b.length <=> a.length }.join "|"
 
   TO_HEPBURN = (romrom = Hash.new
-		KUNREI.each_with_index {|x, i|
-		  romrom[KUNREI[i]] = HEPBURN[i]}
-		romrom)
+                KUNREI.each_with_index {|x, ix|
+                  romrom[KUNREI[ix]] = HEPBURN[ix]}
+                romrom)
 
   TO_KUNREI =  (romrom = Hash.new
-		HEPBURN.each_with_index {|x, i|
-		  romrom[HEPBURN[i]] = KUNREI[i]}
-		romrom)
+                HEPBURN.each_with_index {|x, ix|
+                  romrom[HEPBURN[ix]] = KUNREI[ix]}
+                romrom)
 
   # FIXME: ad hod solution
   # tanni   => tan'i
@@ -307,4 +307,3 @@ class String
     end
   end
 end
-
